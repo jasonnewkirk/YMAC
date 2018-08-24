@@ -37,6 +37,9 @@
       width: 100%;
       z-index:1000;
     }
+    .hero {
+        text-align:center;
+    }
     
     /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
     .sticky + .article-clean {
@@ -46,9 +49,11 @@
 
 </head>
 <body>
-    <div style="margin-top:70px;"></div>
+    <!--<div style="margin-top:70px;"></div>-->
     <!--@{ Html.RenderPartial("SiteLayout/_MainNavigation"); }-->
-    <h1>YMAC</h1>
+    <div class="row">
+        <div class="col-xs-12 hero"><h1>YMAC</h1></div>
+    </div>
 
 <nav id="navbar" class="navbar navbar-default navigation-clean">
   <div class="container-fluid">
