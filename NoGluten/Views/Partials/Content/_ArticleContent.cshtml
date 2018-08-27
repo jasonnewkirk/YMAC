@@ -7,7 +7,8 @@
 <div class="article-clean">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 col-md-12">
+            @*<div class="col-lg-10 col-lg-offset-1 col-md-12">*@
+            <div class="col-lg-12 col-md-12">
                 <div class="intro">
                     <h1 class="text-center">@Umbraco.Field("title", altFieldAlias: "pageName")</h1>
                     @if(Umbraco.AssignedContentItem.HasValue("articleDate"))
@@ -18,7 +19,7 @@
                     }
                     @if(!string.IsNullOrEmpty(mainImageUrl))
                     {
-                        <img class="img-responsive" src="@(mainImageUrl)">
+                        <img class="img-responsive img-fluid" src="@(mainImageUrl)">
                     }
                 </div>
                 <div class="text">
