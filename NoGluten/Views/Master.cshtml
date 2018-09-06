@@ -67,6 +67,8 @@
         
     <!--<div style="margin-top:70px;"></div>-->
     <!--@{ Html.RenderPartial("SiteLayout/_MainNavigation"); }-->
+    
+    
     <div class="row">
         <div class="col-lg-12 hero"><h1><div class="hero-box">You, Me & Celiac</div></h1></div>
     </div>
@@ -126,8 +128,9 @@
   </div><!-- /.container-fluid -->
 </nav>
 *@
-
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+ @{ Html.RenderPartial("SiteLayout/_FixedMainNavigation"); }
+ 
+@*<nav id="navbar-fixed" class="navbar fixed-top  navbar-expand-lg navbar-dark bg-info">
     <div class="container">
   <a class="navbar-brand" href="#">Navbar w/ text</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -148,7 +151,34 @@
     
   </div>
   </div>
-</nav>
+</nav>*@
+<div class="container" id="body-container">
+    
+    @{ Html.RenderPartial("SiteLayout/_FloatingMainNavigation"); }
+ @*<nav id="navbar-floating" class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>*@
+</div>
+<br />
 <div class="container" id="body-container">
     @RenderBody()
         
@@ -168,17 +198,28 @@
     window.onscroll = function() {myFunction()};
     
     // Get the navbar
-    var navbar = document.getElementById("navbar");
+    //var navbar = document.getElementById("navbar");
+    var navbarfloating = document.getElementById("navbar-floating");
+    var navbarfixed = document.getElementById("navbar-fixed");
     
     // Get the Body Container
     var bodycontainer = document.getElementById("body-container");
     
     // Get the offset position of the navbar
-    var sticky = navbar.offsetTop;
-    
+    //var sticky = navbar.offsetTop;
+    var sticky = navbarfloating.offsetTop;
+    $('#navbar-fixed').hide();
     // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
     function myFunction() {
-      if (window.pageYOffset >= sticky) {
+        if (window.pageYOffset >= sticky) {
+            //$('#navbar-floating').hide();
+            $('#navbar-fixed').show();
+        } 
+        else {
+            $('#navbar-floating').show();
+            $('#navbar-fixed').hide();
+        }
+      /*if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
         navbar.classList.add("navbar-dark");
         navbar.classList.add("bg-dark");
@@ -188,7 +229,7 @@
         navbar.classList.remove("navbar-dark");
         navbar.classList.remove("bg-dark");
         bodycontainer.classList.remove("body-container");
-      }
+      }*/
     }
 </script>
 </html>

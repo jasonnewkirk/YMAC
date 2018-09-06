@@ -1,0 +1,118 @@
+﻿@inherits UmbracoViewPage
+
+@using Umbraco.Web.Models
+
+@{ 
+    IPublishedContent homePage = Umbraco.AssignedContentItem.AncestorOrSelf("home");
+    IEnumerable<IPublishedContent> navigationPages = homePage.Children(x => x.IsVisible());
+}
+
+
+<nav id="navbar-fixed" class="navbar fixed-top  navbar-expand-lg navbar-dark bg-info">
+    <div class="container">
+        <a class="navbar-brand" href="#">YMAC</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            @if (navigationPages != null && navigationPages.Count() > 0)
+            {
+                <ul class="navbar-nav">
+                    @RenderChildren(navigationPages)
+                </ul>
+
+            }
+        </div>
+    </div>
+</nav>
+
+@helper RenderChildren(IEnumerable<IPublishedContent> navigationPages)
+{
+    foreach (IPublishedContent item in navigationPages)
+    {
+        if (item.DocumentTypeAlias == "prettyLink")
+        {
+            @RenderPrettyLink(item)
+        }
+        else
+        {
+            @RenderPageLink(item)
+        }
+    }
+}
+
+@helper RenderDropDownChildren(IEnumerable<IPublishedContent> navigationPages)
+{
+    foreach (IPublishedContent item in navigationPages)
+    {  
+        @RenderDropDownPageLink(item)
+    }
+}
+
+@helper RenderPrettyLink(IPublishedContent item)
+{
+    RelatedLinks relatedLinks = item.GetPropertyValue<RelatedLinks>("linkTarget");
+    RelatedLink prettyLink = null;
+    if (relatedLinks != null && relatedLinks.Count() > 0)
+    {
+        prettyLink = relatedLinks.FirstOrDefault();
+    }
+
+    if (prettyLink != null)
+    {
+        if (!item.GetPropertyValue<bool>("disableDropdown") && item.Children != null && item.Children.Where(x => x.IsVisible()).Any())
+        {
+            IEnumerable<IPublishedContent> childItems = item.Children.Where(x => x.IsVisible());
+            bool textOnly = item.GetPropertyValue<bool>("textOnlyInNavigation");
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle @(textOnly ? "textonly" : null)" data-toggle="dropdown" aria-expanded="false" href="@prettyLink.Link">@prettyLink.Caption <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    @RenderDropDownChildren(childItems)
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li role="presentation"><a href="@prettyLink.Link" target="@(prettyLink.NewWindow ? "_blank" : null)">@prettyLink.Caption</a></li>
+        }
+        
+    }
+}
+
+
+
+@helper RenderPageLink(IPublishedContent item)
+{
+    bool isActive = Umbraco.AssignedContentItem.Id == item.Id;
+
+    if (!item.GetPropertyValue<bool>("disableDropdown") && item.Children != null && item.Children.Where(x => x.IsVisible()).Any())
+    {
+        IEnumerable<IPublishedContent> childItems = item.Children.Where(x => x.IsVisible());
+        bool textOnly = item.GetPropertyValue<bool>("textOnlyInNavigation");
+        <li class="nav-item  dropdown">
+            <a class="nav-link dropdown-toggle @(textOnly ? "textonly" : null) @(isActive ? "active" : null)" data-toggle="dropdown" aria-expanded="false" href="@item.Url">@item.Name <span class="caret"></span></a>
+            <ul class="dropdown-menu " role="menu">
+                @RenderDropDownChildren(childItems)
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li role="presentation" class="nav-item  @(isActive ? "active" : null)">
+            <a href="@item.Url" class="nav-link">@item.Name</a>
+        </li>
+    }
+}
+
+
+@helper RenderDropDownPageLink(IPublishedContent item)
+{
+    bool isActive = Umbraco.AssignedContentItem.Id == item.Id;
+    <a href="@item.Url" class="dropdown-item">@item.Name</a>
+}
+
+
+
+
+
+
