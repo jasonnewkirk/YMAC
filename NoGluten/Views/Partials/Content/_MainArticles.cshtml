@@ -1,0 +1,82 @@
+﻿@inherits UmbracoViewPage
+
+@using Umbraco.Web.Models
+
+@{ 
+    string carouselId = "mainCarousel";
+    IEnumerable<IPublishedContent> carousel = Umbraco.AssignedContentItem.GetPropertyValue<IEnumerable<IPublishedContent>>(carouselId);
+}
+
+<div class="jumbotron jumbotron-fluid bg-success">
+  <div class="container">
+    
+    @if (carousel != null && carousel.Any())
+    {
+    <div class="row">
+                @{ int slideCount = 1; }
+                @foreach (IPublishedContent firstSlide in carousel.Where(x => x.IsVisible()))
+                {
+                string title = firstSlide.GetPropertyValue<string>("slideTitle");
+                string subtitle = firstSlide.HasValue("slideSubtitle") ? firstSlide.GetPropertyValue<string>("slideSubtitle") : "";
+                string imageUrl = firstSlide.HasValue("slideImage") ? firstSlide.GetPropertyValue<IPublishedContent>("slideImage").Url : "/img/carousel.jpg";
+                IEnumerable<RelatedLink> links = firstSlide.GetPropertyValue<IEnumerable<RelatedLink>>("slideLink");
+                    
+                RelatedLink link = links != null ? links.FirstOrDefault() : null;    
+                    
+                if(slideCount == 1)
+                    {
+                     string firstImageUrl = firstSlide.HasValue("slideImage") ? firstSlide.GetPropertyValue<IPublishedContent>("slideImage").Url : "/img/carousel.jpg";
+                    
+                    
+                    <div class="col-md-8">
+                            <a href="@link.Link">
+                            <img class="img-fluid rounded" src="@firstImageUrl" alt="First slide!" />
+        	                <h3 class="text-center text-light" style="position:absolute; bottom:35%; left:0;right:0;"><strong>@title</strong></h3>
+        	                <h5 class="text-center text-light" style="position:absolute; bottom:10%; left:0;right:0;">@subtitle</h5>
+        	                
+        	                </a>
+        	                <br /><br />
+        	        </div>
+        	        
+                        slideCount++;
+        	        }
+    	        }
+                <div class="col">
+                    @{slideCount = 1;}
+                @foreach (IPublishedContent slide in carousel.Where(x => x.IsVisible()))
+                {
+                    string title = slide.GetPropertyValue<string>("slideTitle");
+                    string subtitle = slide.HasValue("slideSubtitle") ? slide.GetPropertyValue<string>("slideSubtitle") : "";
+                    string imageUrl = slide.HasValue("slideImage") ? slide.GetPropertyValue<IPublishedContent>("slideImage").Url : "/img/carousel.jpg";
+                    IEnumerable<RelatedLink> links = slide.GetPropertyValue<IEnumerable<RelatedLink>>("slideLink");
+                    RelatedLink link = links != null ? links.FirstOrDefault() : null;
+                    if(slideCount > 1)
+                    {
+                        <div class="row">
+                            
+                            <div class="col">
+                                
+                                <a href="@link.Link">
+                                <img class="img-fluid" src="@(imageUrl)" >
+                                <h5 class="text-center text-light" style="position:absolute; bottom:25%; left:0;right:0;"><strong>@title</strong></h5>
+        	                @*<h5 class="text-center text-light" style="position:absolute; bottom:10%; left:0;right:0;">@subtitle</h5>*@
+                            </a>
+                            <br /><br /></div>
+                            
+        	                </div> 
+                    }
+                        slideCount++;
+                    
+                    
+                }
+                
+                </div>
+        </div>
+            }
+        
+    </div>
+
+    
+  </div>
+    
+

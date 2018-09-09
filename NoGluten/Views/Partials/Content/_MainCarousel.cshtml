@@ -7,6 +7,58 @@
     IEnumerable<IPublishedContent> carousel = Umbraco.AssignedContentItem.GetPropertyValue<IEnumerable<IPublishedContent>>(carouselId);
 }
 
+<div class="jumbotron jumbotron-fluid bg-info">
+  <div class="container">
+    
+    @if (carousel != null && carousel.Any())
+    {
+    <div class="row">
+                @{ int slideCount = 1; }
+                @foreach (IPublishedContent firstSlide in carousel.Where(x => x.IsVisible()))
+                {
+                if(slideCount == 1)
+                    {
+                     string firstImageUrl = firstSlide.HasValue("slideImage") ? firstSlide.GetPropertyValue<IPublishedContent>("slideImage").Url : "/img/carousel.jpg";
+                    
+                    
+                    <div class="col-md-8">
+                            <img class="img-fluid rounded" src="@firstImageUrl" alt="First slide!">
+        	        </div>
+        	        
+                        slideCount++;
+        	        }
+    	        }
+                <div class="col">
+                @foreach (IPublishedContent slide in carousel.Where(x => x.IsVisible()))
+                {
+                    string title = slide.GetPropertyValue<string>("slideTitle");
+                    string subtitle = slide.HasValue("slideSubtitle") ? slide.GetPropertyValue<string>("slideSubtitle") : "";
+                    string imageUrl = slide.HasValue("slideImage") ? slide.GetPropertyValue<IPublishedContent>("slideImage").Url : "/img/carousel.jpg";
+                    IEnumerable<RelatedLink> links = slide.GetPropertyValue<IEnumerable<RelatedLink>>("slideLink");
+                    RelatedLink link = links != null ? links.FirstOrDefault() : null;
+                    if(slideCount > 1)
+                    {
+                        <div class="row">
+                            
+                            <div class="col"><img class="img-fluid" src="@(imageUrl)" ><br /><br /></div>
+                        </div>
+                        slideCount++; 
+                    }
+                    
+                    
+                }
+                
+                </div>
+        </div>
+            }
+        
+    </div>
+}
+    
+  </div>
+    
+    
+
 @if (carousel != null && carousel.Any())
 {
     <div class="carousel slide" data-ride="carousel" id="@carouselId">
