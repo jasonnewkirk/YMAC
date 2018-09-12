@@ -11,6 +11,11 @@
 
 </div>
 @{ Html.RenderPartial("Partials/Content/_MainArticles"); }
-<div class="content">
+<div class="content container">
 
-@{ Html.RenderPartial("Partials/Content/_LatestArticles"); }
+<div class="row">
+    <div class="col-md-8">@{ Html.RenderPartial("Partials/Content/_LatestArticles"); }</div>
+    <div class="col-md-4">@Umbraco.Field("sideContent", recursive: true)</div>
+</div>
+
+</div>
