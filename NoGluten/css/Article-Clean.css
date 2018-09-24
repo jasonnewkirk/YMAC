@@ -1,6 +1,6 @@
 .article-clean {
   color:#56585b;
-  background-color:#fff;
+  /*background-color:#fff;*/
   font-family:'Lora', serif;
   font-size:14px;
 }
@@ -88,6 +88,6 @@ div.article-clean {
 }
 
 div.article-clean .container {
-    background: #ffffff;
+    /*background: #ffffff;*/
     padding-bottom: 20px;
 }
