@@ -134,7 +134,6 @@ C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\bin\Microsoft.AI.DependencyColl
 C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\bin\Microsoft.AI.Web.xml
-C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\obj\Release\NoGluten.csprojResolveAssemblyReference.cache
 C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\obj\Release\NoGluten.csproj.CoreCompileInputs.cache
 C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\obj\Release\NoGluten.dll
 C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\obj\Release\NoGluten.pdb
@@ -279,3 +278,5 @@ C:\Users\jason\Desktop\GitHub\YMAC\NoGluten\obj\Release\NoGluten.csproj.CoreComp
 C:\Users\jason\Desktop\GitHub\YMAC\NoGluten\obj\Release\NoGluten.csproj.CopyComplete
 C:\Users\jason\Desktop\GitHub\YMAC\NoGluten\obj\Release\NoGluten.dll
 C:\Users\jason\Desktop\GitHub\YMAC\NoGluten\obj\Release\NoGluten.pdb
+C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\obj\Release\NoGluten.csprojAssemblyReference.cache
+C:\Users\jnewkirk\Documents\GitHub\YMAC\NoGluten\obj\Release\NoGluten.csproj.CopyComplete
