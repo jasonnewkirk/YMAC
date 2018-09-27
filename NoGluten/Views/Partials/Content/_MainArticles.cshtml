@@ -7,7 +7,8 @@
     IEnumerable<IPublishedContent> carousel = Umbraco.AssignedContentItem.GetPropertyValue<IEnumerable<IPublishedContent>>(carouselId);
 }
 
-<div class="jumbotron jumbotron-fluid bg-dark">
+<div class="jumbotron jumbotron-fluid bg-dark grit">
+    <div >
   <div class="container">
     
     @if (carousel != null && carousel.Any())
@@ -76,7 +77,7 @@
         
     </div>
 
-    
+    </div>
   </div>
     
 

@@ -28,6 +28,7 @@
         @*Html.RequiresCss("/css/Navigation-Clean1.css");*@
         Html.RequiresCss("/css/News-Cards.css");
         Html.RequiresCss("/css/Navigation.css");
+        Html.RequiresCss("/css/YMAC-Styles.css");
         @*Html.RequiresCss("/css/styles.css");*@
 
         //scripts
@@ -126,10 +127,12 @@
         if (window.pageYOffset >= sticky) {
             //$('#navbar-floating').hide();
             $('#navbar-fixed').show();
+            $('#navbar-floating').css('visibility', 'hidden');
         } 
         else {
-            $('#navbar-floating').show();
+            //$('#navbar-floating').show();
             $('#navbar-fixed').hide();
+            $('#navbar-floating').css('visibility', 'visible');
         }
       /*if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
