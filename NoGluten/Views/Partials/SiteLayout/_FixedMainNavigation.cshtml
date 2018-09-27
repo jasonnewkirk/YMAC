@@ -68,7 +68,7 @@
             IEnumerable<IPublishedContent> childItems = item.Children.Where(x => x.IsVisible());
             bool textOnly = item.GetPropertyValue<bool>("textOnlyInNavigation");
             <li class="dropdown">
-                <a class="nav-link dropdown-toggle @(textOnly ? "textonly" : null)" data-toggle="dropdown" aria-expanded="false" href="@prettyLink.Link">@prettyLink.Caption <span class="caret"></span></a>
+                <a class="nav-link font-weight-bold dropdown-toggle @(textOnly ? "textonly" : null)" data-toggle="dropdown" aria-expanded="false" href="@prettyLink.Link">@prettyLink.Caption <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     @RenderDropDownChildren(childItems)
                 </ul>
@@ -93,7 +93,7 @@
         IEnumerable<IPublishedContent> childItems = item.Children.Where(x => x.IsVisible());
         bool textOnly = item.GetPropertyValue<bool>("textOnlyInNavigation");
         <li class="nav-item  dropdown">
-            <a class="nav-link dropdown-toggle @(textOnly ? "textonly" : null) @(isActive ? "active" : null)" data-toggle="dropdown" aria-expanded="false" href="@item.Url">@item.Name <span class="caret"></span></a>
+            <a class="nav-link font-weight-bold dropdown-toggle @(textOnly ? "textonly" : null) @(isActive ? "active" : null)" data-toggle="dropdown" aria-expanded="false" href="@item.Url">@item.Name <span class="caret"></span></a>
             <ul class="dropdown-menu " role="menu">
                 @RenderDropDownChildren(childItems)
             </ul>
@@ -101,7 +101,7 @@
     }
     else
     {
-        <li role="presentation" class="nav-item  @(isActive ? "active" : null)">
+        <li role="presentation" class="nav-item font-weight-bold  @(isActive ? "active" : null)">
             <a href="@item.Url" class="nav-link">@item.Name</a>
         </li>
     }

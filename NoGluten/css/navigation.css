@@ -1,7 +1,7 @@
 #navbar-floating
     {
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
+        border-top: 2px solid #6db17a;
+        border-bottom: 2px solid #6db17a;
     }
 
 #navbar-fixed
