@@ -8,13 +8,13 @@
 }
 
 
-<nav id="navbar-floating" class="navbar navbar-expand-lg navbar-light bg-white d-none d-sm-none d-md-none d-lg-block">
+<nav id="navbar-mobile" class="navbar navbar-expand-lg navbar-light bg-primary shadow  bg-primary d-block d-sm-block d-md-block d-lg-none d-xl-none">
     <div class="container">
+        <a class="navbar-brand" href="/">YM&amp;C</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
             @if (navigationPages != null && navigationPages.Count() > 0)
             {
                 <ul class="navbar-nav">
@@ -22,8 +22,8 @@
                 </ul>
 
             }
-        </div>
-        @*<span class="navbar-text">
+        @*</div>
+        <span class="navbar-text">
           Social Media Links
         </span>*@
     </div>
@@ -101,8 +101,8 @@
     }
     else
     {
-        <li role="presentation" class="nav-item  @(isActive ? "active" : null)">
-            <a href="@item.Url" class="nav-link font-weight-bold">@item.Name</a>
+        <li role="presentation" class="nav-item font-weight-bold  @(isActive ? "active" : null)">
+            <a href="@item.Url" class="nav-link">@item.Name</a>
         </li>
     }
 }
@@ -113,6 +113,8 @@
     bool isActive = Umbraco.AssignedContentItem.Id == item.Id;
     <a href="@item.Url" class="dropdown-item">@item.Name</a>
 }
+
+
 
 
 

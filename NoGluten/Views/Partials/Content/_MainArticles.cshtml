@@ -30,13 +30,19 @@
                     
                     
                     <div class="col-md-8">
-                            <a href="@link.Link" class="text-white">
+                            @*<a href="@link.Link" class="text-white">
                             <img class="img-fluid rounded shadow " src="@firstImageUrl" alt="@title" />
         	                <h3 class="text-center text-white " style="position:absolute; bottom:35%; left:0;right:0;"><strong>@title</strong></h3>
         	                
         	                <h5 class="text-center text-white " style="position:absolute; bottom:10%; left:0;right:0;">@subtitle</h5>
         	                
-        	                </a>
+        	                </a>*@
+        	                
+                            <img class="img-fluid rounded shadow " src="@firstImageUrl" alt="@title" />
+        	                <div class="text-center" style="position:absolute; bottom:20%; left:0;right:0; width:100%"><a href="@link.Link" class="btn btn-danger btn-lg " >@title
+        	                
+        	                </a></div>
+        	                
         	                <br /><br />
         	        </div>
         	        
@@ -58,11 +64,16 @@
                             
                             <div class="col">
                                 
-                                <a href="@link.Link"  class="text-white">
+                                @*<a href="@link.Link"  class="text-white">
                                 <img class="img-fluid shadow " src="@(imageUrl)" >
-                                <h5 class="text-center text-white " style="position:absolute; bottom:25%; left:0;right:0;"><strong>@title</strong></h5>
-        	                @*<h5 class="text-center text-light" style="position:absolute; bottom:10%; left:0;right:0;">@subtitle</h5>*@
+                                <h5 class="text-center text-white " style="position:absolute; bottom:25%; left:0;right:0;"><strong>@title</strong></h5>*@
+                                
+                                <img class="img-fluid shadow " src="@(imageUrl)" >
+                                <div class="text-center" style="position:absolute; bottom:25%; left:0;right:0; width:100%">
+                                <a href="@link.Link"  class="btn btn-danger">
+                                @title
                             </a>
+                            </div>
                             <br /><br /></div>
                             
         	                </div> 
