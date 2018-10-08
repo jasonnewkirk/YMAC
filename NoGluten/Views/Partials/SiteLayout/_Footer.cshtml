@@ -7,7 +7,7 @@
     IEnumerable<RelatedLink> footerLinks = Umbraco.AssignedContentItem.GetPropertyValue<IEnumerable<RelatedLink>>("footerLinks", true);
 }
 
-
+<div class="jumbotron jumbotron-fluid bg-success " style="margin-bottom:0; padding-top:5px; padding-bottom:5px;">
 <div class="footer-basic">
     <footer>
         @if (footerSocialLinks != null && footerSocialLinks.Count() > 0)
@@ -28,6 +28,7 @@
                 }
             </ul>
         }
-        @*<p class="copyright">CodeShare Starter Kit by Paul Seal from <a href="http://www.codeshare.co.uk/" target="_blank">codeshare.co.uk</a> &copy; @DateTime.Now.Year</p>*@
+        <p class="text-center">You, Me & Celiac &copy;@DateTime.Now.Year</p>
     </footer>
+</div>
 </div>
